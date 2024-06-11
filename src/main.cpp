@@ -4,12 +4,14 @@
 
 #include "JsonParser.h"
 #include "IconFamily.h"
+#include "IconFamilyBuilder.h"
 #include "AbstractFactory.h"
 #include "TreeFactory.h"
 #include "RectangleFactory.h"
 #include "Style.h"
 #include "TreeStyle.h"
 #include "RectangleStyle.h"
+
 
 using json = nlohmann::json;
 
@@ -82,7 +84,10 @@ int main(int argc, char *argv[]){
     jsonParser.set_jsonFilePath(iconConfigPath);
     json IconObj = jsonParser.parse();
 
-    IconFamily iconFamilyObj(IconObj, iconFamily);
+    // IconFamily iconFamilyObj(IconObj, iconFamily);
+    IconFamilyBuilder iconFamilyBuilder;
+    iconFamilyBuilder.withIconJson(IconObj).withIconStyle(iconFamily);
+    auto iconFamilyObj = iconFamilyBuilder.build();
 
     std::unique_ptr<AbstractFactory> abstractFactory;
     try {
@@ -93,7 +98,7 @@ int main(int argc, char *argv[]){
     }
 
     auto FunnyJsonExplorer = abstractFactory->createStyle();
-    FunnyJsonExplorer->print(JsonObj, iconFamilyObj);
+    FunnyJsonExplorer->print(JsonObj, *iconFamilyObj);
 
 
 }
