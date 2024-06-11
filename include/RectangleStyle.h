@@ -1,9 +1,9 @@
-#ifndef RECT_STYLE_FACTORY_H
-#define RECT_STYLE_FACTORY_H
+#ifndef RECT_STYLE_H
+#define RECT_STYLE_H
 
-#include "StyleFactory.h"
+#include "Style.h"
 
-class RectangleStyleFactory : public StyleFactory{
+class RectangleStyle : public Style{
 public:
     void print(const json& j, IconFamily& iconFamily, const std::string& prefix = "") const override;
     void printBox(const json& j, IconFamily& iconFamily, const std::string& prefix, size_t line_length, bool is_top) const;

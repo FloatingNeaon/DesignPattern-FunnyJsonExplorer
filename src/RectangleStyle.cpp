@@ -1,6 +1,6 @@
-#include "RectangleStyleFactory.h"
+#include "RectangleStyle.h"
 
-void RectangleStyleFactory::print(const json& j, IconFamily& iconFamily, const std::string& prefix) const {
+void RectangleStyle::print(const json& j, IconFamily& iconFamily, const std::string& prefix) const {
 
     size_t line_length = 0;
     for (auto it = j.begin(); it != j.end(); ++it) {
@@ -21,7 +21,7 @@ void RectangleStyleFactory::print(const json& j, IconFamily& iconFamily, const s
     
 }
 
-void RectangleStyleFactory::printBox(const json& j, IconFamily& iconFamily, const std::string& prefix, size_t line_length, bool is_top) const{
+void RectangleStyle::printBox(const json& j, IconFamily& iconFamily, const std::string& prefix, size_t line_length, bool is_top) const{
     
     for (auto it = j.begin(); it != j.end(); ++it) {
         bool is_last = (std::next(it) == j.end());
@@ -51,7 +51,7 @@ void RectangleStyleFactory::printBox(const json& j, IconFamily& iconFamily, cons
     }
 }
 
-std::string RectangleStyleFactory::generatePadding(size_t current_length, size_t total_length) const{
+std::string RectangleStyle::generatePadding(size_t current_length, size_t total_length) const{
     if (current_length>=total_length){
         return "";
     }

@@ -1,5 +1,5 @@
-#ifndef STYLE_FACTORY_H
-#define STYLE_FACTORY_H
+#ifndef STYLE_H
+#define STYLE_H
 
 #include <iostream>
 #include <nlohmann/json.hpp>
@@ -7,9 +7,9 @@
 
 using json = nlohmann::json;
 
-class StyleFactory{
+class Style{
 public:
-    virtual ~StyleFactory() = default;
+    virtual ~Style() = default;
     virtual void print(const json& j,  IconFamily& iconFamily, const std::string& prefix = "") const = 0;
 };
 

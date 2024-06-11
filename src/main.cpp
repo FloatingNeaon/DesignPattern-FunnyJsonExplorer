@@ -4,9 +4,12 @@
 
 #include "JsonParser.h"
 #include "IconFamily.h"
-#include "StyleFactory.h"
-#include "TreeStyleFactory.h"
-#include "RectangleStyleFactory.h"
+#include "AbstractFactory.h"
+#include "TreeFactory.h"
+#include "RectangleFactory.h"
+#include "Style.h"
+#include "TreeStyle.h"
+#include "RectangleStyle.h"
 
 using json = nlohmann::json;
 
@@ -34,14 +37,12 @@ int getopt(int argc, char *const argv[], const char *optstring) {
     return opt;
 }
 
-std::unique_ptr<StyleFactory> createStyleFactory(const std::string& style) {
+std::unique_ptr<AbstractFactory> createAbstractFactory(const std::string& style) {
     if (style == "tree") {
-        return std::make_unique<TreeStyleFactory>();
-    } 
-    else if (style == "rectangle") {
-        return std::make_unique<RectangleStyleFactory>();
-    }
-    else {
+        return std::make_unique<TreeFactory>();
+    } else if (style == "rectangle") {
+        return std::make_unique<RectangleFactory>();
+    } else {
         throw std::invalid_argument("Unknown style: " + style);
     }
 }
@@ -74,6 +75,7 @@ int main(int argc, char *argv[]){
         }
     }
 
+    // 读取并分析文件
     JsonParser jsonParser;
     jsonParser.set_jsonFilePath(jsonFilePath);
     json JsonObj = jsonParser.parse();
@@ -82,14 +84,16 @@ int main(int argc, char *argv[]){
 
     IconFamily iconFamilyObj(IconObj, iconFamily);
 
-    std::unique_ptr<StyleFactory> styleFactory;
+    std::unique_ptr<AbstractFactory> abstractFactory;
     try {
-        styleFactory = createStyleFactory(style);
+        abstractFactory = createAbstractFactory(style);
     } catch (const std::invalid_argument& e) {
         std::cerr << e.what() << std::endl;
         return 1;
     }
 
-    styleFactory->print(JsonObj, iconFamilyObj);
+    auto FunnyJsonExplorer = abstractFactory->createStyle();
+    FunnyJsonExplorer->print(JsonObj, iconFamilyObj);
+
 
 }

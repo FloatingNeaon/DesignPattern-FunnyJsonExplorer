@@ -1,6 +1,6 @@
-#include "TreeStyleFactory.h"
+#include "TreeStyle.h"
 
-void TreeStyleFactory::print(const json& j, IconFamily& iconFamily, const std::string& prefix) const {
+void TreeStyle::print(const json& j, IconFamily& iconFamily, const std::string& prefix) const {
     for (auto it = j.begin(); it != j.end(); ++it) {
         bool is_last = (std::next(it) == j.end());
 
