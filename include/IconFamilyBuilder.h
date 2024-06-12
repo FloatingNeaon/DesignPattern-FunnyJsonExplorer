@@ -1,3 +1,14 @@
+/**
+ * @file IconFamilyBuilder.h
+ * @author CaoYonghao
+ * @brief 采用建造者模式，构建IconFamily对象
+ * @version 0.1
+ * @date 2024-06-12
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef ICON_FAMILY_BUILDER_H
 #define ICON_FAMILY_BUILDER_H
 

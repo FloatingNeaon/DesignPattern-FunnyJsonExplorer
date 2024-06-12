@@ -1,3 +1,14 @@
+/**
+ * @file RectangleStyle.h
+ * @author CaoYonghao
+ * @brief 实现Style接口，提供具体的矩形打印方式
+ * @version 0.1
+ * @date 2024-06-12
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef RECT_STYLE_H
 #define RECT_STYLE_H
 

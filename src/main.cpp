@@ -84,7 +84,6 @@ int main(int argc, char *argv[]){
     jsonParser.set_jsonFilePath(iconConfigPath);
     json IconObj = jsonParser.parse();
 
-    // IconFamily iconFamilyObj(IconObj, iconFamily);
     IconFamilyBuilder iconFamilyBuilder;
     iconFamilyBuilder.withIconJson(IconObj).withIconStyle(iconFamily);
     auto iconFamilyObj = iconFamilyBuilder.build();

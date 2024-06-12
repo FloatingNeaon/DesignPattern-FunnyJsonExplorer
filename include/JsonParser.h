@@ -1,3 +1,14 @@
+/**
+ * @file JsonParser.h
+ * @author CaoYonghao
+ * @brief 解析JSON文件，返回JSON对象
+ * @version 0.1
+ * @date 2024-06-12
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef JSON_PARSER_H
 #define JSON_PARSER_H
 

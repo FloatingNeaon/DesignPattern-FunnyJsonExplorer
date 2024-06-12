@@ -1,3 +1,14 @@
+/**
+ * @file AbstractFactory.h
+ * @author CaoYonghao
+ * @brief 提供接口，用于创建与特定样式相关的对象
+ * @version 0.1
+ * @date 2024-06-12
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef ABSTRACT_FACTORY_H
 #define ABSTRACT_FACTORY_H
 

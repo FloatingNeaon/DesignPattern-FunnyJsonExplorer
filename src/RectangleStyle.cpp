@@ -7,15 +7,17 @@ void RectangleStyle::print(const json& j, IconFamily& iconFamily, const std::str
         std::string key = it.key();
         line_length = std::max(line_length, key.length() + prefix.length() + 50); // Adjust 50 as needed for icons and padding
     }
-    
+    //顶部
     std::cout << "┌─" << prefix;
     for (int i=0;i<line_length;i++){
         std::cout<< "─";
     }
     std::cout <<"——┐" << std::endl;
 
+    //中间部分
     printBox(j, iconFamily, "|  ", line_length, true);
     
+    //底部
     std::cout << "|__" << generatePadding(0, line_length) << "_|" << std::endl;
     
     
@@ -36,11 +38,14 @@ void RectangleStyle::printBox(const json& j, IconFamily& iconFamily, const std::
             std::cout << "├─ ";
         }
 
+        //中间节点
         if (it->is_structured()) {
             std::cout << iconFamily.get_containerIcon() << " " << key << " ";
             std::cout << generatePadding(current_length + iconFamily.get_containerIcon().length(), line_length) << "__|" << std::endl;
             printBox(*it, iconFamily, prefix + "|  ", line_length, false);
-        } else {
+        } 
+        //叶子节点
+        else {
             std::cout << iconFamily.get_leafIcon() << " " << key;
             if (!it->is_null()) {
                 std::cout << ": " << *it;

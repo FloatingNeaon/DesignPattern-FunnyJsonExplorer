@@ -12,12 +12,15 @@ void TreeStyle::print(const json& j, IconFamily& iconFamily, const std::string& 
 
         }
 
+        //中间节点
         if (it->is_structured()) {
             std::cout << iconFamily.get_containerIcon();
             std::cout << it.key();
             std::cout << std::endl;
             print(*it, iconFamily, prefix + (is_last ? "   " : "|  "));
-        } else {
+        } 
+        //叶节点
+        else {
             std::cout << iconFamily.get_leafIcon();
             std::cout << it.key();
             if (it->is_null()) {
